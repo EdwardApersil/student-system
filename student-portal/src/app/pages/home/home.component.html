@@ -1,1 +1,43 @@
-<p>home works!</p>
+<div class="container">
+  <div class="home mt-20">
+    <h1 class="text-center my-10 text-6xl">Welcome to Student Portal</h1>
+  </div>
+  
+  <!-- Button to open modal -->
+  <div class="search">
+    <input
+      type="text"
+      placeholder="Search for students..."
+      class="p-3 rounded-md"
+      [formControl]="searchControl"
+    />
+    <button class="bg-slate-400 text-white px-4 p-3 rounded-md" (click)="openModal()">Add Student</button>
+  </div>
+
+  <!-- Modal component -->
+  <app-add-student-modal *ngIf="displayModal" (closeModal)="closeModal()"></app-add-student-modal>
+
+  <!-- List students -->
+  <div *ngIf="filteredStudents$ | async as students; else loading">
+    <div class="cards-container">
+      <div *ngFor="let student of students" class="card">
+        <img class="rounded-sm" src="https://www.realmenrealstyle.com/wp-content/uploads/2023/08/Kinky-Hair.jpg" alt="">
+        <div class="card-header">
+          <h3>{{ student.name }}</h3>
+        </div>
+        <div class="card-body">
+          <p><strong>Age:</strong> {{ student.age }}</p>
+          <p><strong>Course:</strong> {{ student.course }}</p>
+          <p><strong>Address:</strong> {{ student.address }}</p>
+          <p><strong>Student Id: </strong>{{student.studentId}}</p>
+        </div>
+        <a [routerLink]="['/details', student.id]" class="bg-slate-400 rounded-md shadow-md text-white p-2">More details</a>
+      </div>
+    </div>
+  </div>
+  <ng-template #loading>
+    <div class="loading-spinner">
+      <div class="spinner"></div>
+    </div>
+  </ng-template>
+</div>
