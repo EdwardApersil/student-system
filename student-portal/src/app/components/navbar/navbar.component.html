@@ -3,7 +3,7 @@
         <img src="../../assets/images/logo.png" alt="logo" />
     </div>
     <div class="navbar__links">
-        <a routerLink="/home" routerLinkActive="active">Home</a>
+        <a [routerLink]="['/home']" class="block mt-4 text-blue-600 hover:underline">Home</a>
     </div>
 </div>
 <router-outlet></router-outlet>

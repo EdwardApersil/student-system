@@ -30,7 +30,7 @@ export class StudentService {
     return this.http.get<any>(`${this.STUDENT_API_URL}/${id}`).pipe(
       catchError(error => {
         console.error('Error getting student:', error);
-        return of({}); // Return an empty object or handle the error appropriately
+        return of([]); // Return an empty array instead of an empty object
       })
     );
   }
@@ -40,14 +40,14 @@ export class StudentService {
     return this.http.post<any>(this.STUDENT_API_URL, student).pipe(
       catchError(error => {
         console.error('Error creating student:', error);
-        return of({}); // Return an empty object or handle the error as needed
+        return of({}); 
       })
     );
   }
 
   // Update an existing student
   updateStudent(student: any): Observable<any> {
-    return this.http.put<any>(`${this.STUDENT_API_URL}/${student.id}`, student).pipe(
+    return this.http.patch<any>(`${this.STUDENT_API_URL}/${student.id}`, student).pipe(
       error => {
         console.log('Error updating student:', error);
         return of({});
@@ -58,11 +58,11 @@ export class StudentService {
   // Delete a student
   deleteStudent(id: number): Observable<any> {
     return this.http.delete<any>(`${this.STUDENT_API_URL}/${id}`).pipe(
-      error => {
-        console.log('Error deleting student:', error);
-        return of({});
-      }
-    )
+      catchError(error => {
+        console.error('Error deleting student:', error);
+        return of({}); // Handle the error as needed
+      })
+    );
   }
 
   searchStudents(searchText: string): Observable<Student[]> {

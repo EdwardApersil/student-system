@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { StudentService } from './../../services/student.service';
@@ -19,7 +19,8 @@ export class StudentDetailsComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private studentService: StudentService
+    private studentService: StudentService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -31,5 +32,20 @@ export class StudentDetailsComponent implements OnInit {
       })
     );
   }
-}
 
+  deleteStudent(studentId: number): void {
+    this.studentService.deleteStudent(studentId).subscribe(
+      () => {
+        alert('Student deleted successfully.');
+        this.router.navigate(['/home']); // Navigate back to home after deletion
+      },
+      error => {
+        console.error('Error deleting student:', error);
+      }
+    );
+  }
+
+  editStudent(studentId: number): void {
+    this.router.navigate(['/edit', studentId]); // Navigate to edit student page with the student ID
+  }
+}

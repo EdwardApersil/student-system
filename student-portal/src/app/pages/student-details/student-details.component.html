@@ -1,26 +1,29 @@
 <div class="container">
     <div class="student-details mt-10">
-        <h1 class="text-center text-4xl font-bold">Student Details</h1>
-        <a [routerLink]="['/home']" class="block mt-4 text-blue-600 hover:underline">Back to Home</a>
+      <h1 class="text-center text-4xl font-bold">Student Details</h1>
+      <a [routerLink]="['/home']" class="block mt-4 text-blue-600 hover:underline">Back to Home</a>
     </div>
     <div class="student-details mx-auto mt-10">
-        <div class="bg-white shadow-md rounded-lg overflow-hidden details">
-            <img class="shadow-md" src="https://www.realmenrealstyle.com/wp-content/uploads/2023/08/Kinky-Hair.jpg" alt="Student Image">
-            <div class="p-6">
-                <div class="">
-                    <h3 class="text-xl font-semibold mb-2" *ngIf="student$ | async as student">{{ student.name }}</h3>
-                </div>
-                <div *ngIf="student$ | async as student">
-                    <p><strong>Age:</strong> {{ student.age }}</p>
-                    <p><strong>Course:</strong> {{ student.course }}</p>
-                    <p><strong>Address:</strong> {{ student.address }}</p>
-                </div>
-            </div>
+      <div class="bg-white shadow-md rounded-lg overflow-hidden details">
+        <img class="shadow-md" src="https://www.realmenrealstyle.com/wp-content/uploads/2023/08/Kinky-Hair.jpg" alt="Student Image">
+        <div class="p-6">
+          <div>
+            <h3 class="text-xl font-semibold mb-2" *ngIf="student$ | async as student">{{ student.name }}</h3>
+          </div>
+          <div *ngIf="student$ | async as student">
+            <p><strong>Age:</strong> {{ student.age }}</p>
+            <p><strong>Course:</strong> {{ student.course }}</p>
+            <p><strong>Address:</strong> {{ student.address }}</p>
+            <button (click)="deleteStudent(student.id)" class="bg-red-500 text-white px-4 py-2 rounded-md mt-4">Delete Student</button>
+            <button (click)="editStudent(student.id)" class="bg-green-700 text-white px-4 py-2 mx-2 rounded-md mt-4">Edit Student Info</button>
+          </div>
         </div>
+      </div>
     </div>
     <ng-container *ngIf="!(student$ | async)">
-        <div class="flex justify-center items-center mt-10">
-            <div class="spinner"></div>
-        </div>
+      <div class="flex justify-center items-center mt-10">
+        <div class="spinner"></div>
+      </div>
     </ng-container>
-</div>
+  </div>
+  

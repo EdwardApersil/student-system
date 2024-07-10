@@ -79,8 +79,8 @@ export class HomeComponent implements OnInit {
   }
 
 
-  showForm() {
-    this.displayForm = !this.displayForm;
-    alert('Form is displayed');
+  onStudentAdded(): void {
+    this.getStudents(); // Refresh the student list
+    this.closeModal();
   }
 }
