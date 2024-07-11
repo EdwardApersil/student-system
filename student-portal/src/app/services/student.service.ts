@@ -46,8 +46,8 @@ export class StudentService {
   }
 
   // Update an existing student
-  updateStudent(student: any): Observable<any> {
-    return this.http.patch<any>(`${this.STUDENT_API_URL}/${student.id}`, student).pipe(
+  updateStudent(id: number, updatedStudent: any): Observable<any> {
+    return this.http.patch<any>(`${this.STUDENT_API_URL}/${id}`, updatedStudent).pipe(
       error => {
         console.log('Error updating student:', error);
         return of({});

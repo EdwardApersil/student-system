@@ -29,6 +29,8 @@ export class HomeComponent implements OnInit {
   displayForm = false;
   displayModal = false;
 
+  numberOfStudents = 0;
+
   constructor(private studentService: StudentService, private fb: FormBuilder) { }
 
   ngOnInit(): void {
@@ -42,6 +44,9 @@ export class HomeComponent implements OnInit {
 
   getStudents(): void {
     this.students$ = this.studentService.getStudents();
+    this.students$.subscribe(students => {
+      this.numberOfStudents = students.length;
+    });
   }
 
   setupSearch(): void {

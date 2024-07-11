@@ -29,6 +29,7 @@
   <!-- List students -->
   <div *ngIf="filteredStudents$ | async as students; else loading">
     <div class="cards-container">
+      <p>{{numberOfStudents}}</p>
       <div *ngFor="let student of students" class="card">
         <img
           class="rounded-sm"

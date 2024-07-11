@@ -51,9 +51,10 @@ export class EditStudentComponent implements OnInit {
   editStudent(): void {
     if (this.editStudentForm.valid) {
       const updatedStudent = this.editStudentForm.value;
-      this.studentService.updateStudent(this.studentId).subscribe(() => {
+      this.studentService.updateStudent(this.studentId, updatedStudent).subscribe(() => {
+        console.log(updatedStudent)
         alert('Student updated successfully');
-        this.router.navigate(['/home'])
+        this.router.navigate(['/details', this.studentId]);
       }, error => {
         console.error('Error updating student:', error);
       });

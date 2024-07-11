@@ -1,0 +1,23 @@
+<form [formGroup]="editStudentForm" (ngSubmit)="editStudent()">
+  <div>
+    <label for="name">Name</label>
+    <input id="name" formControlName="name" />
+  </div>
+  <div>
+    <label for="age">Age</label>
+    <input id="age" type="number" formControlName="age" />
+  </div>
+  <div>
+    <label for="address">Address</label>
+    <input id="address" formControlName="address" />
+  </div>
+  <div>
+    <label for="course">Course</label>
+    <input id="course" formControlName="course" />
+  </div>
+  <div>
+    <label for="email">Email</label>
+    <input id="email" formControlName="email" />
+  </div>
+  <button type="submit">Save</button>
+</form>
