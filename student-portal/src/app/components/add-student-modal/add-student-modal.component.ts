@@ -41,7 +41,6 @@ export class AddStudentModalComponent implements OnInit {
       this.studentService.createStudent(student).subscribe(
         () => {
           console.log('Student added successfully:', student);
-
           this.createStudentForm.reset();
           this.studentAdded.emit();
           this.closeModal.emit();

@@ -1,0 +1,65 @@
+<!-- <form [formGroup]="editStudentForm" (ngSubmit)="editStudent()">
+  <div>
+    <label for="name">Name</label>
+    <input id="name" formControlName="name" />
+  </div>
+  <div>
+    <label for="age">Age</label>
+    <input id="age" type="number" formControlName="age" />
+  </div>
+  <div>
+    <label for="address">Address</label>
+    <input id="address" formControlName="address" />
+  </div>
+  <div>
+    <label for="course">Course</label>
+    <input id="course" formControlName="course" />
+  </div>
+  <div>
+    <label for="email">Email</label>
+    <input id="email" formControlName="email" />
+  </div>
+  <button type="submit">Save</button>
+</form> -->
+
+<div class="modal bg-slate-100 rounded-md shadow-md p-4" *ngIf="true">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>Add Student</h2>
+      <span class="close" (click)="closeModal.emit()">×</span>
+    </div>
+    <div class="modal-body">
+      <form [formGroup]="editStudentForm" (ngSubmit)="editStudent()">
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <input type="text" id="name" formControlName="name" required>
+        </div>
+    
+        <div class="form-group">
+          <label for="course">Course:</label>
+          <input type="text" id="course" formControlName="course" required>
+        </div>
+
+        <div class="form-group">
+          <label for="course">Student Id:</label>
+          <input type="number" id="studentId" formControlName="studentId" required>
+        </div>
+        <div class="form-group">
+          <label for="course">Address</label>
+          <input type="text" id="address" formControlName="address" required>
+        </div>
+
+        <div class="form-group">
+          <label for="course">Student Email</label>
+          <input type="text" id="email" formControlName="email" required>
+        </div>
+
+        <div class="form-group">
+          <label for="course">Date Of Birth</label>
+          <input type="date" id="dob" formControlName="dob" required>
+        </div>
+        <button type="submit" class="bg-slate-400 text-white px-4 py-2 rounded-md">Add Student</button>
+      </form>
+    </div>
+  </div>
+</div>

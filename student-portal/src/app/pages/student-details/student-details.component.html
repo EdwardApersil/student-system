@@ -3,6 +3,8 @@
       <h1 class="text-center text-4xl font-bold">Student Details</h1>
       <a [routerLink]="['/home']" class="block mt-4 text-blue-600 hover:underline">Back to Home</a>
     </div>
+    <!-- <app-edit-student></app-edit-student> -->
+    <app-add-student-modal *ngIf="displayModal" (closeModal)="closeModal()"></app-add-student-modal>
     <div class="student-details mx-auto mt-10">
       <div class="bg-white shadow-md rounded-lg overflow-hidden details">
         <img class="shadow-md" src="https://www.realmenrealstyle.com/wp-content/uploads/2023/08/Kinky-Hair.jpg" alt="Student Image">

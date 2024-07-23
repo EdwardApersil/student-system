@@ -1,9 +1,36 @@
 <div class="navbar flex justify-between mt-2">
-    <div class="navbar__logo">
-        <img src="../../assets/images/logo.png" alt="logo" />
+  <div class="navbar__logo">
+    <img src="../../assets/images/logo.png" alt="logo" />
+  </div>
+  <div class="navbar__links">
+    <a [routerLink]="['/home']" class="block mt-4 text-blue-600 hover:underline"
+      >Home</a
+    >
+  </div>
+  <!-- Admin or user icon -->
+  <div
+    (click)="showDropdownMenu()"
+    class="navbar__user flex align-middle rounded-sm shadow-sm p-2"
+  >
+    <img
+      src="https://www.gravatar.com/avatar/723256992892876800?s=200&d=robohash&r=x"
+      width="50"
+      height="50"
+      alt="User"
+    />
+    <div class="mt-4">
+      <span class="text-sm text-gray-500">{{ data?.name }}</span>
     </div>
-    <div class="navbar__links">
-        <a [routerLink]="['/home']" class="block mt-4 text-blue-600 hover:underline">Home</a>
-    </div>
+  </div>
 </div>
+<div *ngIf="showDropdown" class="drop-down">
+  <a
+    *ngFor="let link of links"
+    [routerLink]="[link.path]"
+    class="dropdown-item"
+  >
+    {{ link.label }}
+  </a>
+</div>
+
 <router-outlet></router-outlet>
