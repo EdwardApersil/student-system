@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, catchError, of, throwError } from 'rxjs';
 import { Student } from '../interface/student';
+import { Admin } from '../interface/admin';
 
 
 
@@ -11,6 +12,7 @@ import { Student } from '../interface/student';
 
 export class StudentService {
   STUDENT_API_URL = 'http://localhost:8080/api/v1/students';
+  ADMIN_API_URL = 'http://localhost:8080/api/v1/admin';
 
   constructor(
     private http: HttpClient
@@ -70,6 +72,16 @@ export class StudentService {
       catchError((error) => {
         console.error('Error searching students:', error);
         return throwError(() => new Error('Error searching students, please try again later.'));
+      })
+    );
+  }
+
+  // GET ADMIN
+  getAdmin(id: number): Observable<Admin> {
+    return this.http.get<Admin>(`${this.ADMIN_API_URL}/${id}`).pipe(
+      catchError(error => {
+        console.error('Error getting admin:', error);
+        return throwError(() => new Error('Error getting admin, please try again later.'));
       })
     );
   }

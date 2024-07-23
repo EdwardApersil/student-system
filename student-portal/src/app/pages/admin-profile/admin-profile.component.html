@@ -1,0 +1,15 @@
+<div *ngIf="admin" class="mt-20">
+    <h1 class="text-center text-3xl">Admin Profile</h1>
+    <div class="admin-profile gap-10 shadow-md rounded-sm p-10 mt-20">
+        <img
+        src="https://www.insidehighered.com/sites/default/files/Harper%20Photo.jpg"
+        alt=""
+      />
+      <div> 
+        <h1>{{ admin.name }}</h1>
+        <p>Email: {{ admin.email }}</p>
+        <p>Description: {{ admin.description }}</p>
+        <p>Address: {{ admin.address }}</p>
+      </div>
+    </div>
+</div>

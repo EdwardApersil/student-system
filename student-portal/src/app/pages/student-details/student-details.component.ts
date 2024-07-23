@@ -6,22 +6,28 @@ import { StudentService } from './../../services/student.service';
 import { Student } from './../../interface/student';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { EditStudentComponent } from "../../components/edit-student/edit-student.component";
+import { AddStudentModalComponent } from "../../components/add-student-modal/add-student-modal.component";
 
 @Component({
   selector: 'app-student-details',
   standalone: true,
   templateUrl: './student-details.component.html',
   styleUrls: ['./student-details.component.css'],
-  imports: [CommonModule, RouterLink]
+  imports: [CommonModule, RouterLink, EditStudentComponent, AddStudentModalComponent]
 })
 export class StudentDetailsComponent implements OnInit {
+  [x: string]: any;
   student$!: Observable<Student>;
-
+  displayModal: false;
+  
   constructor(
     private route: ActivatedRoute,
     private studentService: StudentService,
     private router: Router
-  ) {}
+  ) {
+    this.displayModal = false;
+  }
 
   ngOnInit(): void {
     this.student$ = this.route.paramMap.pipe(
@@ -47,5 +53,9 @@ export class StudentDetailsComponent implements OnInit {
 
   editStudent(studentId: number): void {
     this.router.navigate(['/edit', studentId]); // Navigate to edit student page with the student ID
+  }
+
+  closeModal(): void {
+    this.displayModal = false;
   }
 }

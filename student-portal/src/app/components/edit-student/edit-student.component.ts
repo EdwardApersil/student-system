@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { StudentService } from '../../services/student.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -15,6 +15,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 export class EditStudentComponent implements OnInit {
   editStudentForm!: FormGroup;
   studentId!: number;
+  @Output() closeModal = new EventEmitter<void>();
+
 
   constructor(
     private route: ActivatedRoute,
@@ -55,11 +57,16 @@ export class EditStudentComponent implements OnInit {
         console.log(updatedStudent)
         alert('Student updated successfully');
         this.router.navigate(['/details', this.studentId]);
+        this.closeModal.emit();
       }, error => {
         console.error('Error updating student:', error);
       });
     } else {
       console.log('Form is invalid, please fix the errors.');
     }
+  }
+
+  close(): void {
+    this.closeModal.emit();
   }
 }
