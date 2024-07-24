@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { StudentService } from '../../services/student.service';
 import { Observable, combineLatest } from 'rxjs';
 import { debounceTime, distinctUntilChanged, startWith, map, filter } from 'rxjs/operators';
-import { Student } from '../../interface/student';
+import { Intern } from '../../interface/intern';
 import { CommonModule } from '@angular/common';
 import { FormControl, FormsModule, ReactiveFormsModule, Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { RouterModule } from '@angular/router';
@@ -22,12 +22,14 @@ import { AddStudentModalComponent } from "../../components/add-student-modal/add
     ]
 })
 export class HomeComponent implements OnInit {
-  students$!: Observable<Student[]>;
+  interns$!: Observable<Intern[]>;
   searchControl = new FormControl('');
-  filteredStudents$!: Observable<Student[]>;
+  filteredStudents$!: Observable<Intern[]>;
   createStudentForm!: FormGroup;
   displayForm = false;
   displayModal = false;
+
+  workid!: string;
 
   numberOfStudents = 0;
 
@@ -37,21 +39,22 @@ export class HomeComponent implements OnInit {
     this.getStudents();
     this.setupSearch();
     this.closeModal();
+    this.generateWorkId();
   
     // this.createStudent();
     // this.addStudent();
   }
 
   getStudents(): void {
-    this.students$ = this.studentService.getStudents();
-    this.students$.subscribe(students => {
-      this.numberOfStudents = students.length;
+    this.interns$ = this.studentService.getInterns();
+    this.interns$.subscribe(interns => {
+      this.numberOfStudents = interns.length;
     });
   }
 
   setupSearch(): void {
     this.filteredStudents$ = combineLatest([
-      this.students$,
+      this.interns$,
       this.searchControl.valueChanges.pipe(
         startWith(''),
         filter(searchTerm => searchTerm !== null),
@@ -69,9 +72,9 @@ export class HomeComponent implements OnInit {
     );
   }
 
-  filterStudents(students: Student[], text: string): Student[] {
+  filterStudents(students: Intern[], text: string): Intern[] {
     const lowerCaseText = text.toLocaleLowerCase();
-    return students.filter(student => student.name.toLocaleLowerCase().includes(lowerCaseText));
+    return students.filter(student => student.username.toLocaleLowerCase().includes(lowerCaseText));
   }
 
   openModal(): void {
@@ -81,6 +84,10 @@ export class HomeComponent implements OnInit {
 
   closeModal(): void {
     this.displayModal = false;
+  }
+
+  generateWorkId(){
+    this.workid = "EIntern" + Math.random().toString(36).substr(2, 9);
   }
 
 
