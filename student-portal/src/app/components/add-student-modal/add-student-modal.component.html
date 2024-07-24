@@ -1,66 +1,50 @@
 <div class="modal bg-slate-100 rounded-md shadow-md p-4" *ngIf="true">
   <div class="modal-content">
     <div class="modal-header">
-      <h2>Add Student</h2>
+      <h2>Add Intern</h2>
       <span class="close" (click)="closeModal.emit()">×</span>
     </div>
     <div class="modal-body">
-      <form [formGroup]="createStudentForm" (ngSubmit)="addStudent()">
+      <form [formGroup]="createInternForm" (ngSubmit)="addIntern()">
         <div class="form-group">
-          <label for="name">Name:</label>
-          <input type="text" id="name" formControlName="name" required>
-          <div *ngIf="createStudentForm.get('name')?.invalid && createStudentForm.get('name')?.touched">
-            <div class="error">Name is required.</div>
+          <label for="name">Username:</label>
+          <input type="text" id="username" formControlName="username" required>
+          <div *ngIf="createInternForm.get('username')?.invalid && createInternForm.get('username')?.touched">
+            <div class="error">Username is required.</div>
           </div>
         </div>
-        <!-- <div class="form-group">
-          <label for="age">Age:</label>
-          <input type="number" id="age" formControlName="age" required>
-          <div *ngIf="createStudentForm.get('age')?.invalid && createStudentForm.get('age')?.touched">
-            <div class="error">Age is required and must be a number.</div>
-          </div>
-        </div> -->
+
         <div class="form-group">
-          <label for="course">Course:</label>
-          <input type="text" id="course" formControlName="course" required>
-          <div *ngIf="createStudentForm.get('course')?.invalid && createStudentForm.get('course')?.touched">
+          <label for="course">Department:</label>
+          <input type="text" id="department" formControlName="department" required>
+          <div *ngIf="createInternForm.get('department')?.invalid && createInternForm.get('department')?.touched">
             <div class="error">Course is required.</div>
           </div>
         </div>
 
         <div class="form-group">
-          <label for="course">Student Id:</label>
-          <input type="number" id="studentId" formControlName="studentId" required>
-          <div *ngIf="createStudentForm.get('studentId')?.invalid && createStudentForm.get('studentId')?.touched">
+          <label for="course">Programe:</label>
+          <input type="text" id="programe" formControlName="programe" required>
+          <div *ngIf="createInternForm.get('programe')?.invalid && createInternForm.get('programe')?.touched">
             <div class="error">Student Id is required.</div>
           </div>
         </div>
         <div class="form-group">
-          <label for="course">Address</label>
-          <input type="text" id="address" formControlName="address" required>
-          <div *ngIf="createStudentForm.get('address')?.invalid && createStudentForm.get('address')?.touched">
+          <label for="course">School</label>
+          <input type="text" id="school" formControlName="school" required>
+          <div *ngIf="createInternForm.get('school')?.invalid && createInternForm.get('school')?.touched">
             <div class="error">Student Address is required.</div>
           </div>
         </div>
 
         <div class="form-group">
-          <label for="course">Student Email</label>
+          <label for="course">Intern Email</label>
           <input type="text" id="email" formControlName="email" required>
-          <div *ngIf="createStudentForm.get('email')?.invalid && createStudentForm.get('email')?.touched">
+          <div *ngIf="createInternForm.get('email')?.invalid && createInternForm.get('email')?.touched">
             <div class="error">Student Address is required.</div>
           </div>
         </div>
-
-        <div class="form-group">
-          <label for="course">Date Of Birth</label>
-          <input type="date" id="dob" formControlName="dob" required>
-          <div *ngIf="createStudentForm.get('dob')?.invalid && createStudentForm.get('dob')?.touched">
-            <div class="error">Student date of birth is required.</div>
-          </div>
-        </div>
-
-
-        <button type="submit" class="bg-slate-400 text-white px-4 py-2 rounded-md">Add Student</button>
+        <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded-md">Add Student</button>
       </form>
     </div>
   </div>

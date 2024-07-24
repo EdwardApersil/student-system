@@ -1,0 +1,56 @@
+form{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    background-color: #327db2;
+    padding: 5rem;
+    margin-top: 3rem;
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="password"],
+form input[value="number"]{
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+}
+
+form button{
+    background-color: #afc436;
+    color: white;
+    padding: 10px 20px;
+    margin-top: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 200px;
+}
+
+.role-select {
+    width: 200px;
+    height: 35px;
+    padding: 5px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.role-select:focus {
+    border-color: #4CAF50;
+    outline: none;
+}
+
+.role{
+    lable{
+        margin-right: 10px;
+    }
+}
+
+label{
+    color: white;
+    font-size: 1.5rem;
+}

@@ -16,17 +16,18 @@ export class NavbarComponent implements OnInit {
   links = [
     { path: 'admin-profile', label: 'Profile' },
     { path: 'settings', label: 'Settings' },
-    { path: 'logout', label: 'Logout' }
+    { path: '/login', label: 'logout' }
   ];
 
   data?: Admin; // Correctly typed variable
   showDropdown = false;
+  adminId!: string;
 
   constructor(private studentService: StudentService, private adminDataService: AdminDataService) { }
 
   ngOnInit(): void {
     const adminId = 1; // Assign a value to adminId
-    this.admin(adminId);
+    // this.admin(adminId);
   }
 
   showDropdownMenu(): void {
@@ -41,7 +42,7 @@ export class NavbarComponent implements OnInit {
   }
 
   admin(adminId: number): void {
-    this.studentService.getAdmin(adminId).subscribe(
+    this.studentService.getAdmin(this.adminId).subscribe(
       (response: Admin) => {
         this.data = response; // Correct variable assignment
         this.adminDataService.setAdmin(response); // Pass data to service
