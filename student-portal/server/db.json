@@ -1,0 +1,153 @@
+{
+  "interns": [
+    {
+      "id": "d290f1ee-6c54-4b01-90e6-d701748f0851",
+      "username": "Edward Apersil",
+      "email": "intern1@example.com",
+      "department": "Software Center",
+      "school": "University of Ghana",
+      "programe": "Computer Engineering",
+      "work_id": "INT001",
+      "role": "intern"
+    },
+    {
+      "id": "7b2a3d67-1a3d-4f5e-9938-d9142f5e3949",
+      "username": "Kwame Agyei",
+      "email": "intern3@example.com",
+      "department": "Software Center",
+      "school": "University of Ghana",
+      "programe": "Computer Engineering",
+      "work_id": "INT003",
+      "role": "intern"
+    },
+    {
+      "id": "aade",
+      "username": "Caroline",
+      "department": "Tech",
+      "programe": "Computer Science",
+      "email": "edwardapersil7@gmail.com",
+      "school": "ATU",
+      "role": "intern"
+    },
+    {
+      "id": "e87f",
+      "username": "Caroline",
+      "department": "Human Resource",
+      "programe": "Human Resources Management",
+      "email": "caroline@gmail.com",
+      "school": "KNUST",
+      "role": "intern"
+    },
+    {
+      "id": "cada",
+      "username": "Ransford Apersil",
+      "department": "Infrastructure",
+      "programe": "Computer Science",
+      "email": "rans@gmail.com",
+      "school": "KNUST",
+      "role": "intern"
+    },
+    {
+      "id": "5326",
+      "username": "Rahim Abdul",
+      "department": "Infrastructure",
+      "programe": "Computer Science",
+      "email": "rahim@gmail.com",
+      "school": "UDS",
+      "role": "intern"
+    }
+  ],
+  "admins": [
+    {
+      "id": "f07c02e1-55f1-4a77-8b50-3b8bfa4dbe73",
+      "username": "admin1",
+      "email": "admin1@example.com",
+      "work_id": "ADM001",
+      "role": "admin"
+    }
+  ],
+  "lineManagers": [
+    {
+      "id": "9d3e7d15-7d2d-4e68-92d9-1c8f2b0d5c23",
+      "username": "linemanager1",
+      "email": "linemanager1@example.com",
+      "work_id": "LM001",
+      "role": "line_manager",
+      "password": "password123"
+    },
+    {
+      "id": "b29b487d-9e5f-4f93-9a9e-7193e2e0e1b8",
+      "username": "linemanager2",
+      "email": "linemanager2@example.com",
+      "work_id": "LM002",
+      "role": "line_manager",
+      "password": "password123"
+    }
+  ],
+  "auth": [
+    {
+      "id": "9d3e7d15-7d2d-4e68-92d9-1c8f2b0d5c23",
+      "username": "admin",
+      "password": "admin",
+      "role": "admin"
+    },
+    {
+      "id": "b29b487d-9e5f-4f93-9a9e-7193e2e0e1b8",
+      "username": "linemanager",
+      "password": "password123",
+      "role": "line_manager"
+    },
+    {
+      "id": "b29b487d-9e5f-4f93-9a9e-7193e2e0e1b8",
+      "username": "intern",
+      "password": "intern",
+      "role": "intern"
+    }
+  ],
+  "complaints": [
+    {
+      "id": "c1",
+      "user_id": "d290f1ee-6c54-4b01-90e6-d701748f0851",
+      "content": "I have an issue with my workstation setup.",
+      "timestamp": "2024-07-01T12:34:56Z"
+    }
+  ],
+  "progressReports": [
+    {
+      "id": "p1",
+      "user_id": "d290f1ee-6c54-4b01-90e6-d701748f0851",
+      "content": "Learned about REST APIs and built a small project.",
+      "timestamp": "2024-07-01T08:30:00Z"
+    }
+  ],
+  "tags": [
+    {
+      "id": "t1",
+      "report_id": "p1",
+      "line_manager_id": "9d3e7d15-7d2d-4e68-92d9-1c8f2b0d5c23"
+    }
+  ],
+  "forumPosts": [
+    {
+      "id": "fp1",
+      "user_id": "d290f1ee-6c54-4b01-90e6-d701748f0851",
+      "department_id": 1,
+      "content": "Discussion on new technology trends in IT.",
+      "timestamp": "2024-07-01T09:00:00Z"
+    }
+  ],
+  "departments": [
+    {
+      "id": "1",
+      "name": "IT"
+    },
+    {
+      "id": "2",
+      "name": "HR"
+    },
+    {
+      "id": "3",
+      "name": "Finance"
+    }
+  ]
+}

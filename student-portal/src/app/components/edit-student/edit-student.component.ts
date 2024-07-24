@@ -1,3 +1,4 @@
+import { Intern } from './../../interface/intern';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { StudentService } from '../../services/student.service';
@@ -14,7 +15,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 })
 export class EditStudentComponent implements OnInit {
   editStudentForm!: FormGroup;
-  studentId!: number;
+  // studentId!: number;
+  updatedIntern!: string;
   @Output() closeModal = new EventEmitter<void>();
 
 
@@ -26,40 +28,41 @@ export class EditStudentComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.studentId = Number(this.route.snapshot.paramMap.get('id'));
+    // this.studentId = Number(this.route.snapshot.paramMap.get('id'));
     this.initForm();
-    this.loadStudentDetails();
+    // this.loadStudentDetails();
   }
 
   initForm(): void {
     this.editStudentForm = this.fb.group({
-      name: ['', [Validators.required, Validators.minLength(3)]],
+      username: ['', [Validators.required, Validators.minLength(3)]],
       age: ['', [Validators.required, Validators.min(18)]],
-      address: ['', Validators.required],
-      course: ['', Validators.required],
+      // address: ['', Validators.required],
+      // course: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      studentId: ['', Validators.required]
+      work_id: ['', Validators.required],
+      role: ['', Validators.required]
     });
   }
 
   loadStudentDetails(): void {
-    this.studentService.getStudent(this.studentId).subscribe(student => {
+    this.studentService.getIntern(this.updatedIntern).subscribe(student => {
       this.editStudentForm.patchValue(student);
     }, error => {
       console.error('Error loading student details:', error);
     });
   }
 
-  editStudent(): void {
+  editIntern(): void {
     if (this.editStudentForm.valid) {
-      const updatedStudent = this.editStudentForm.value;
-      this.studentService.updateStudent(this.studentId, updatedStudent).subscribe(() => {
-        console.log(updatedStudent)
+      const updatedIntern = this.editStudentForm.value;
+      this.studentService.updateIntern(this.updatedIntern, updatedIntern).subscribe(() => {
+        console.log(updatedIntern);
         alert('Student updated successfully');
-        this.router.navigate(['/details', this.studentId]);
+        this.router.navigate(['/details', this.updatedIntern]);
         this.closeModal.emit();
       }, error => {
-        console.error('Error updating student:', error);
+        console.error('Error updating Intern details:', error);
       });
     } else {
       console.log('Form is invalid, please fix the errors.');

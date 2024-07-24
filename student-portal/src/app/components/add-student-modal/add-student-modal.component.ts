@@ -11,9 +11,9 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./add-student-modal.component.css']
 })
 export class AddStudentModalComponent implements OnInit {
-  createStudentForm!: FormGroup;
+  createInternForm!: FormGroup;
   @Output() closeModal = new EventEmitter<void>();
-  @Output() studentAdded = new EventEmitter<void>();
+  @Output() InternAdded = new EventEmitter<void>();
 
   constructor(
     private studentService: StudentService,
@@ -25,36 +25,41 @@ export class AddStudentModalComponent implements OnInit {
   }
 
   createForm(): void {
-    this.createStudentForm = this.fb.group({
-      name: ['', [Validators.required]],
-      address: ['', Validators.required],
-      course: ['', Validators.required],
+    this.createInternForm = this.fb.group({
+      username: ['', [Validators.required]],
+      department: ['', Validators.required],
+      programe: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      studentId: ['', Validators.required],
-      dob: ['', Validators.required]
+      // work_id: ['', Validators.required],
+      school: ['', Validators.required],
+      role: ['intern']
     });
   }
 
-  addStudent(): void {
-    if (this.createStudentForm.valid) {
-      const student = this.createStudentForm.value;
-      this.studentService.createStudent(student).subscribe(
+  addIntern(): void {
+    if (this.createInternForm.valid) {
+      const intern = this.createInternForm.value;
+      this.studentService.createIntern(intern).subscribe(
         () => {
-          console.log('Student added successfully:', student);
-          this.createStudentForm.reset();
-          this.studentAdded.emit();
+          console.log('Inter added successfully:', intern);
+          this.createInternForm.reset();
+          this.InternAdded.emit();
           this.closeModal.emit();
           // resfresh the page
           window.location.reload();
         },
-        error => console.error('Error adding student:', error)
+        error => console.error('Error adding intern:', error)
       );
     } else {
       console.log('Form is invalid, please fix the errors.');
     }
+    alert("Intern added successfully");
   }
 
   close(): void {
     this.closeModal.emit();
   }
+
+  // generate work_id
+  
 }

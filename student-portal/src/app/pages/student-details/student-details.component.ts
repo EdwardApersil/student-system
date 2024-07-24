@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { StudentService } from './../../services/student.service';
-import { Student } from './../../interface/student';
+import { Intern } from '../../interface/intern';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { EditStudentComponent } from "../../components/edit-student/edit-student.component";
@@ -18,8 +18,9 @@ import { AddStudentModalComponent } from "../../components/add-student-modal/add
 })
 export class StudentDetailsComponent implements OnInit {
   [x: string]: any;
-  student$!: Observable<Student>;
+  interns$!: Observable<Intern>;
   displayModal: false;
+  internId!: string;
   
   constructor(
     private route: ActivatedRoute,
@@ -30,17 +31,17 @@ export class StudentDetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.student$ = this.route.paramMap.pipe(
+    this.interns$ = this.route.paramMap.pipe(
       switchMap(params => {
-        const studentId = Number(params.get('id'));
-        console.log('Fetching student with ID:', studentId);
-        return this.studentService.getStudent(studentId);
+        this.internId = String(params.get('id'));
+        console.log('Fetching student with ID:', this.internId);
+        return this.studentService.getIntern(this.internId);
       })
     );
   }
 
-  deleteStudent(studentId: number): void {
-    this.studentService.deleteStudent(studentId).subscribe(
+  deleteStudent(): void {
+    this.studentService.deleteIntern(this.internId).subscribe(
       () => {
         alert('Student deleted successfully.');
         this.router.navigate(['/home']); // Navigate back to home after deletion
@@ -51,8 +52,8 @@ export class StudentDetailsComponent implements OnInit {
     );
   }
 
-  editStudent(studentId: number): void {
-    this.router.navigate(['/edit', studentId]); // Navigate to edit student page with the student ID
+  editStudent(): void {
+    this.router.navigate(['/edit', this.internId]); // Navigate to edit student page with the student ID
   }
 
   closeModal(): void {

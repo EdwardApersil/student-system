@@ -1,3 +1,11 @@
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    /* background-color: #dbe3e9; */
+    padding: 15px;
+    border-radius: 5px;
+}
+
 .drop-down {
     background-color: #f9f9f9;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);

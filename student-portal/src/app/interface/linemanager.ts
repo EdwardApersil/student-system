@@ -1,7 +1,8 @@
-export interface Admin {
+export interface LineManager {
     id: string;
     username: string;
     email: string;
     work_id: string;
-    role: 'admin';
+    role: 'line_manager';
+    password: string;
 }

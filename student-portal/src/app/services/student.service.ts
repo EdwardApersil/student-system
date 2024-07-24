@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, catchError, of, throwError } from 'rxjs';
-import { Student } from '../interface/student';
+import { Intern } from '../interface/intern';
 import { Admin } from '../interface/admin';
+import { LineManager } from '../interface/linemanager';
 
 
 
@@ -11,73 +12,75 @@ import { Admin } from '../interface/admin';
 })
 
 export class StudentService {
-  STUDENT_API_URL = 'http://localhost:8080/api/v1/students';
-  ADMIN_API_URL = 'http://localhost:8080/api/v1/admin';
+  INTERN_API_URL = 'http://localhost:3000/interns';
+  ADMIN_API_URL = 'http://localhost:3000/admins';
+  LINE_MANAGER_API_URL = 'http://localhost:3000/lineManagers';
+  AUTH_API_URL = 'http://localhost:3000/auth';
 
-  constructor(
-    private http: HttpClient
-  ) { }
+  constructor(private http: HttpClient) { }
 
-  // Get all students
-  getStudents(): Observable<any> {
-    return this.http.get<any>(this.STUDENT_API_URL).pipe(
+  // Get all interns
+  getInterns(): Observable<Intern[]> {
+    return this.http.get<Intern[]>(this.INTERN_API_URL).pipe(
       catchError((error) => {
-        console.error('Error getting students:', error);
-        return throwError(() => new Error('Error getting students, please try again later.'));
+        console.error('Error getting interns:', error);
+        return throwError(() => new Error('Error getting interns, please try again later.'));
       })
     );
   }
 
-  getStudent(id: number): Observable<any> {
-    return this.http.get<any>(`${this.STUDENT_API_URL}/${id}`).pipe(
+  // Get an intern by ID
+  getIntern(id: string): Observable<Intern> {
+    return this.http.get<Intern>(`${this.INTERN_API_URL}/${id}`).pipe(
       catchError(error => {
-        console.error('Error getting student:', error);
-        return of([]); // Return an empty array instead of an empty object
+        console.error('Error getting intern:', error);
+        return throwError(() => new Error('Error getting intern, please try again later.'));
       })
     );
   }
 
-  // Create a new student
-  createStudent(student: any): Observable<any> {
-    return this.http.post<any>(this.STUDENT_API_URL, student).pipe(
+  // Create a new intern
+  createIntern(intern: Intern): Observable<Intern> {
+    return this.http.post<Intern>(this.INTERN_API_URL, intern).pipe(
       catchError(error => {
-        console.error('Error creating student:', error);
-        return of({}); 
+        console.error('Error creating intern:', error);
+        return throwError(() => new Error('Error creating intern, please try again later.'));
       })
     );
   }
 
-  // Update an existing student
-  updateStudent(id: number, updatedStudent: any): Observable<any> {
-    return this.http.patch<any>(`${this.STUDENT_API_URL}/${id}`, updatedStudent).pipe(
-      error => {
-        console.log('Error updating student:', error);
-        return of({});
-      }
-    )
-  }
-
-  // Delete a student
-  deleteStudent(id: number): Observable<any> {
-    return this.http.delete<any>(`${this.STUDENT_API_URL}/${id}`).pipe(
+  // Update an existing intern
+  updateIntern(id: string, updatedIntern: Intern): Observable<Intern> {
+    return this.http.patch<Intern>(`${this.INTERN_API_URL}/${id}`, updatedIntern).pipe(
       catchError(error => {
-        console.error('Error deleting student:', error);
-        return of({}); // Handle the error as needed
+        console.error('Error updating intern:', error);
+        return throwError(() => new Error('Error updating intern, please try again later.'));
       })
     );
   }
 
-  searchStudents(searchText: string): Observable<Student[]> {
-    return this.http.get<Student[]>(`${this.STUDENT_API_URL}?search=${searchText}`).pipe(
+  // Delete an intern
+  deleteIntern(id: string): Observable<void> {
+    return this.http.delete<void>(`${this.INTERN_API_URL}/${id}`).pipe(
+      catchError(error => {
+        console.error('Error deleting intern:', error);
+        return throwError(() => new Error('Error deleting intern, please try again later.'));
+      })
+    );
+  }
+
+  // Search interns
+  searchInterns(searchText: string): Observable<Intern[]> {
+    return this.http.get<Intern[]>(`${this.INTERN_API_URL}?search=${searchText}`).pipe(
       catchError((error) => {
-        console.error('Error searching students:', error);
-        return throwError(() => new Error('Error searching students, please try again later.'));
+        console.error('Error searching interns:', error);
+        return throwError(() => new Error('Error searching interns, please try again later.'));
       })
     );
   }
 
-  // GET ADMIN
-  getAdmin(id: number): Observable<Admin> {
+  // Get an admin by ID
+  getAdmin(id: string): Observable<Admin> {
     return this.http.get<Admin>(`${this.ADMIN_API_URL}/${id}`).pipe(
       catchError(error => {
         console.error('Error getting admin:', error);
@@ -85,5 +88,56 @@ export class StudentService {
       })
     );
   }
+
+  // Get all line managers
+  getLineManagers(): Observable<LineManager[]> {
+    return this.http.get<LineManager[]>(this.LINE_MANAGER_API_URL).pipe(
+      catchError((error) => {
+        console.error('Error getting line managers:', error);
+        return throwError(() => new Error('Error getting line managers, please try again later.'));
+      })
+    );
+  }
+
+  // Get a line manager by ID
+  getLineManager(id: string): Observable<LineManager> {
+    return this.http.get<LineManager>(`${this.LINE_MANAGER_API_URL}/${id}`).pipe(
+      catchError(error => {
+        console.error('Error getting line manager:', error);
+        return throwError(() => new Error('Error getting line manager, please try again later.'));
+      })
+    );
+  }
+
+  // Create a new line manager
+  createLineManager(lineManager: LineManager): Observable<LineManager> {
+    return this.http.post<LineManager>(this.LINE_MANAGER_API_URL, lineManager).pipe(
+      catchError(error => {
+        console.error('Error creating line manager:', error);
+        return throwError(() => new Error('Error creating line manager, please try again later.'));
+      })
+    );
+  }
+
+  // Update an existing line manager
+  updateLineManager(id: string, updatedLineManager: LineManager): Observable<LineManager> {
+    return this.http.patch<LineManager>(`${this.LINE_MANAGER_API_URL}/${id}`, updatedLineManager).pipe(
+      catchError(error => {
+        console.error('Error updating line manager:', error);
+        return throwError(() => new Error('Error updating line manager, please try again later.'));
+      })
+    );
+  }
+
+  // Delete a line manager
+  deleteLineManager(id: string): Observable<void> {
+    return this.http.delete<void>(`${this.LINE_MANAGER_API_URL}/${id}`).pipe(
+      catchError(error => {
+        console.error('Error deleting line manager:', error);
+        return throwError(() => new Error('Error deleting line manager, please try again later.'));
+      })
+    );
+  }
+
 
 }

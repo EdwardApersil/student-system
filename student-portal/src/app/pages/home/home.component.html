@@ -1,6 +1,6 @@
 <div class="container">
   <div class="home mt-20">
-    <h1 class="text-center my-10 text-6xl">Welcome to Student Portal</h1>
+    <h1 class="text my-10 text-6xl">Welcome to Ecobank Interns Portal</h1>
   </div>
 
   <!-- Button to open modal -->
@@ -29,7 +29,7 @@
   <!-- List students -->
   <div *ngIf="filteredStudents$ | async as students; else loading">
     <div class="cards-container">
-      <p>{{numberOfStudents}}</p>
+      <!-- <p>{{numberOfStudents}}</p> -->
       <div *ngFor="let student of students" class="card">
         <img
           class="rounded-sm"
@@ -37,13 +37,15 @@
           alt=""
         />
         <div class="card-header">
-          <h3>{{ student.name }}</h3>
+          <h3>{{ student.username }}</h3>
         </div>
         <div class="card-body">
-          <p><strong>Age:</strong> {{ student.age }}</p>
-          <p><strong>Course:</strong> {{ student.course }}</p>
-          <p><strong>Address:</strong> {{ student.address }}</p>
-          <p><strong>Student Id: </strong>{{ student.studentId }}</p>
+          <p><strong>Email:</strong> {{ student.email }}</p>
+          <p><strong>Department:</strong> {{ student.department }}</p>
+          <p><strong>School:</strong> {{ student.school }}</p>
+          <p><strong>Programe:</strong> {{ student.programe }}</p>
+          <p><strong>Role:</strong> {{ student.role }}</p>
+          <p><strong>Work Id Id: </strong>{{ workid }}</p>
         </div>
         <a
           [routerLink]="['/details', student.id]"

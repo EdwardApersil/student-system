@@ -1,31 +1,33 @@
 <div class="container">
-    <div class="student-details mt-10">
+    <div class="header student-details mt-10">
       <h1 class="text-center text-4xl font-bold">Student Details</h1>
-      <a [routerLink]="['/home']" class="block mt-4 text-blue-600 hover:underline">Back to Home</a>
     </div>
-    <!-- <app-edit-student></app-edit-student> -->
+    <!-- <a [routerLink]="['/home']" class="block mt-4 text-blue-600 hover:underline">Back to Home</a> -->
     <app-add-student-modal *ngIf="displayModal" (closeModal)="closeModal()"></app-add-student-modal>
     <div class="student-details mx-auto mt-10">
       <div class="bg-white shadow-md rounded-lg overflow-hidden details">
-        <img class="shadow-md" src="https://www.realmenrealstyle.com/wp-content/uploads/2023/08/Kinky-Hair.jpg" alt="Student Image">
-        <div class="p-6">
+        <img class="img" src="https://www.realmenrealstyle.com/wp-content/uploads/2023/08/Kinky-Hair.jpg" alt="Student Image">
+        <div class="details">
           <div>
-            <h3 class="text-xl font-semibold mb-2" *ngIf="student$ | async as student">{{ student.name }}</h3>
+            <h3 class="text-xl font-semibold mb-2" *ngIf="interns$ | async as student"><strong>Name:</strong> {{ student.username }}</h3>
           </div>
-          <div *ngIf="student$ | async as student">
-            <p><strong>Age:</strong> {{ student.age }}</p>
-            <p><strong>Course:</strong> {{ student.course }}</p>
-            <p><strong>Address:</strong> {{ student.address }}</p>
-            <button (click)="deleteStudent(student.id)" class="bg-red-500 text-white px-4 py-2 rounded-md mt-4">Delete Student</button>
-            <button (click)="editStudent(student.id)" class="bg-green-700 text-white px-4 py-2 mx-2 rounded-md mt-4">Edit Student Info</button>
+          <div *ngIf="interns$ | async as student">
+            <p><strong>Email:</strong> {{ student.email }}</p>
+            <p><strong>Department:</strong> {{ student.department }}</p>
+            <p><strong>School:</strong> {{ student.school }}</p>
+            <p><strong>Programe:</strong> {{ student.programe }}</p>
+            <p><strong>Role:</strong> {{ student.role }}</p>
+            <button (click)="deleteStudent()" class="delete bg-red-500 text-white px-4 py-2 rounded-md mt-4">Delete Student</button>
+            <button (click)="editStudent()" class="edit bg-green-700 text-white px-4 py-2 mx-2 rounded-md mt-4">Edit Student Info</button>
           </div>
         </div>
       </div>
     </div>
-    <ng-container *ngIf="!(student$ | async)">
+    <ng-container *ngIf="!(interns$ | async)">
       <div class="flex justify-center items-center mt-10">
         <div class="spinner"></div>
       </div>
     </ng-container>
   </div>
+
   
