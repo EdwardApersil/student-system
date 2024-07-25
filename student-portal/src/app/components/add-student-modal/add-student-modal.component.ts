@@ -2,6 +2,8 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormGroup, Validators, FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StudentService } from '../../services/student.service';
 import { CommonModule } from '@angular/common';
+import { LineManager } from '../../interface/linemanager';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-add-student-modal',
@@ -14,6 +16,7 @@ export class AddStudentModalComponent implements OnInit {
   createInternForm!: FormGroup;
   @Output() closeModal = new EventEmitter<void>();
   @Output() InternAdded = new EventEmitter<void>();
+  lineManagers$!: Observable<LineManager[]>;
 
   constructor(
     private studentService: StudentService,
@@ -22,6 +25,7 @@ export class AddStudentModalComponent implements OnInit {
 
   ngOnInit(): void {
     this.createForm();
+    this.getLineManagers();
   }
 
   createForm(): void {
@@ -32,7 +36,9 @@ export class AddStudentModalComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       // work_id: ['', Validators.required],
       school: ['', Validators.required],
-      role: ['intern']
+      role: ['intern'],
+      password: ['', [Validators.required]],
+      lineManager: ['', Validators.required]
     });
   }
 
@@ -60,6 +66,10 @@ export class AddStudentModalComponent implements OnInit {
     this.closeModal.emit();
   }
 
-  // generate work_id
+  // get list of line managers
+  getLineManagers(): void {
+    this.lineManagers$ = this.studentService.getLineManagers();
+    console.log("Line Managers", this.lineManagers$);
+  }
   
 }

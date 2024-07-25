@@ -1,3 +1,4 @@
+import { LineManager } from './../../interface/linemanager';
 import { Component, OnInit } from '@angular/core';
 import { StudentService } from '../../services/student.service';
 import { Observable, combineLatest } from 'rxjs';
@@ -30,6 +31,7 @@ export class HomeComponent implements OnInit {
   displayModal = false;
 
   workid!: string;
+  LineManager!: LineManager;
 
   numberOfStudents = 0;
 
@@ -40,9 +42,6 @@ export class HomeComponent implements OnInit {
     this.setupSearch();
     this.closeModal();
     this.generateWorkId();
-  
-    // this.createStudent();
-    // this.addStudent();
   }
 
   getStudents(): void {

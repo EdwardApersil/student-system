@@ -44,6 +44,29 @@
             <div class="error">Student Address is required.</div>
           </div>
         </div>
+
+        <div class="form-group">
+          <label for="course">Intern Password</label>
+          <input type="password" id="password" formControlName="password" required>
+          <div *ngIf="createInternForm.get('password')?.invalid && createInternForm.get('password')?.touched">
+            <div class="error">Student Password is required.</div>
+          </div>
+        </div>
+
+        <!-- drop down of line managers -->
+        <div class="form-group">
+          <label for="course">Line Manager:</label>
+          <select id="lineManager" formControlName="lineManager">
+            <option value="">Select Line Manager</option>
+            <ng-container *ngIf="lineManagers$ | async as lineManagers; else loading">
+              <option *ngFor="let manager of lineManagers" [value]="manager.id">{{ manager.username }}</option>
+            </ng-container>
+            <ng-template #loading>
+              <option disabled>Loading...</option>
+            </ng-template>
+          </select>
+        </div> 
+    
         <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded-md">Add Student</button>
       </form>
     </div>

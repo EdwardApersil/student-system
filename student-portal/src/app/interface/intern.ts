@@ -1,3 +1,4 @@
+import { LineManager } from './linemanager';
 export interface Intern {
     id: string;
     username: string;
@@ -7,4 +8,5 @@ export interface Intern {
     programe: string,
     work_id: string;
     role: 'intern';
+    LineManager: LineManager;
 }
