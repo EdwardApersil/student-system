@@ -127,12 +127,58 @@
       "timestamp": "2024-07-01T12:34:56Z"
     }
   ],
-  "progressReports": [
+  "tasksReports": [
     {
       "id": "p1",
-      "user_id": "d290f1ee-6c54-4b01-90e6-d701748f0851",
-      "content": "Learned about REST APIs and built a small project.",
-      "timestamp": "2024-07-01T08:30:00Z"
+      "title": "Project 1",
+      "work_id": "7b2a3d67-1a3d-4f5e-9938-d9142f5e3949",
+      "content": "Developed a new feature for the company app.",
+      "timestamp": "2024-07-05T10:00:00Z",
+      "date": "2024-07-05",
+      "time": "10:00",
+      "completed": false,
+      "tagged_line_manager_ids": [
+        "b29b487d-9e5f-4f93-9a9e-7193e2e0e1b8"
+      ]
+    },
+    {
+      "id": "p2",
+      "title": "Project 2",
+      "work_id": "7b2a3d67-1a3d-4f5e-9938-d9142f5e3949",
+      "content": "Developed a new feature for the company app.",
+      "timestamp": "2024-07-05T10:00:00Z",
+      "date": "2024-07-05",
+      "time": "10:00",
+      "completed": false,
+      "tagged_line_manager_ids": [
+        "b29b487d-9e5f-4f93-9a9e-7193e2e0e1b8"
+      ]
+    },
+    {
+      "id": "p3",
+      "title": "Project 3",
+      "work_id": "7b2a3d67-1a3d-4f5e-9938-d9142f5e3949",
+      "content": "Developed a new feature for the company app.",
+      "timestamp": "2024-07-05T10:00:00Z",
+      "date": "2024-07-05",
+      "time": "10:00",
+      "completed": false,
+      "tagged_line_manager_ids": [
+        "9d3e7d15-7d2d-4e68-92d9-1c8f2b0d5c23"
+      ]
+    },
+    {
+      "id": "p4",
+      "title": "Project 4",
+      "work_id": "7b2a3d67-1a3d-4f5e-9938-d9142f5e3949",
+      "content": "Developed a new feature for the company app.",
+      "timestamp": "2024-07-05T10:00:00Z",
+      "date": "2024-07-05",
+      "time": "10:00",
+      "completed": false,
+      "tagged_line_manager_ids": [
+        "9d3e7d15-7d2d-4e68-92d9-1c8f2b0d5c23"
+      ]
     }
   ],
   "tags": [

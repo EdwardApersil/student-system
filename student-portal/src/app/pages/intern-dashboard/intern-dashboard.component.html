@@ -1,1 +1,37 @@
-<p>intern-dashboard works!</p>
+<div class="container">
+    <div class="nav">
+      <form action="">
+        <input type="text" placeholder="Search for tasks" [formControl]="searchControl" />
+      </form>
+      <button>Add Tasks</button>
+    </div>
+  
+    <div *ngIf="filteredTask$ | async as tasks; else loading">
+      <div class="card-tasks">
+        <div *ngFor="let task of tasks" class="card">
+          <div class="card-header">
+            <h3>{{ task.title }}</h3>
+          </div>
+          <div class="card-body">
+            <!-- <p><strong>Intern Name:</strong> {{ task.intern.username }}</p> -->
+            <p><strong>Content:</strong> {{ task.content }}</p>
+            <p><strong>Timestamp:</strong> {{ task.timestamp }}</p>
+            <p><strong>Date:</strong> {{ task.date }}</p>
+            <p><strong>Time:</strong> {{ task.time }}</p>
+            <p><strong>Completed:</strong> {{ task.completed }}</p>
+            <p><strong>Tagged Line Managers:</strong> 
+              <span *ngFor="let manager of task.taggedLineManagers">{{ manager.username }} </span>
+            </p>
+          </div>
+          <a (click)="deleteTaskReport(task.id)">Delete</a>
+          <button >Edit Task</button>
+        </div>
+      </div>
+    </div>
+    <ng-template #loading>
+      <div class="loading-spinner">
+        <div class="spinner"></div>
+      </div>
+    </ng-template>
+  </div>
+  
