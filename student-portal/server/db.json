@@ -8,7 +8,9 @@
       "school": "University of Ghana",
       "programe": "Computer Engineering",
       "work_id": "INT001",
-      "role": "intern"
+      "role": "intern",
+      "password": "internPassword1",
+      "lineManager": "9d3e7d15-7d2d-4e68-92d9-1c8f2b0d5c23"
     },
     {
       "id": "7b2a3d67-1a3d-4f5e-9938-d9142f5e3949",
@@ -18,7 +20,9 @@
       "school": "University of Ghana",
       "programe": "Computer Engineering",
       "work_id": "INT003",
-      "role": "intern"
+      "role": "intern",
+      "password": "internPassword1",
+      "lineManager": "9d3e7d15-7d2d-4e68-92d9-1c8f2b0d5c23"
     },
     {
       "id": "aade",
@@ -27,7 +31,9 @@
       "programe": "Computer Science",
       "email": "edwardapersil7@gmail.com",
       "school": "ATU",
-      "role": "intern"
+      "role": "intern",
+      "password": "carolinePassword1",
+      "lineManager": "b29b487d-9e5f-4f93-9a9e-7193e2e0e1b8"
     },
     {
       "id": "e87f",
@@ -36,7 +42,9 @@
       "programe": "Human Resources Management",
       "email": "caroline@gmail.com",
       "school": "KNUST",
-      "role": "intern"
+      "role": "intern",
+      "password": "internPassword1",
+      "lineManager": "9d3e7d15-7d2d-4e68-92d9-1c8f2b0d5c23"
     },
     {
       "id": "cada",
@@ -45,7 +53,9 @@
       "programe": "Computer Science",
       "email": "rans@gmail.com",
       "school": "KNUST",
-      "role": "intern"
+      "role": "intern",
+      "password": "internPassword1",
+      "lineManager": "b29b487d-9e5f-4f93-9a9e-7193e2e0e1b8"
     },
     {
       "id": "5326",
@@ -54,7 +64,31 @@
       "programe": "Computer Science",
       "email": "rahim@gmail.com",
       "school": "UDS",
-      "role": "intern"
+      "role": "intern",
+      "password": "internPassword1",
+      "lineManager": "9d3e7d15-7d2d-4e68-92d9-1c8f2b0d5c23"
+    },
+    {
+      "id": "8b6d",
+      "username": "Etornam Afia",
+      "department": "Human Resource",
+      "programe": "Human Resources Management",
+      "email": "etornam@gmail.com",
+      "school": "UDS",
+      "role": "intern",
+      "password": "internPassword1",
+      "lineManager": "9d3e7d15-7d2d-4e68-92d9-1c8f2b0d5c23"
+    },
+    {
+      "id": "9c00",
+      "username": "Pumaya Yakubu",
+      "department": "Infrastructure",
+      "programe": "Computer Science",
+      "email": "pumy@yahoo.com",
+      "school": "KNUST",
+      "role": "intern",
+      "password": "1234567",
+      "lineManager": "9d3e7d15-7d2d-4e68-92d9-1c8f2b0d5c23"
     }
   ],
   "admins": [
@@ -63,13 +97,14 @@
       "username": "admin1",
       "email": "admin1@example.com",
       "work_id": "ADM001",
-      "role": "admin"
+      "role": "admin",
+      "password": "adminPassword"
     }
   ],
   "lineManagers": [
     {
       "id": "9d3e7d15-7d2d-4e68-92d9-1c8f2b0d5c23",
-      "username": "linemanager1",
+      "username": "Oga Owen",
       "email": "linemanager1@example.com",
       "work_id": "LM001",
       "role": "line_manager",
@@ -77,31 +112,11 @@
     },
     {
       "id": "b29b487d-9e5f-4f93-9a9e-7193e2e0e1b8",
-      "username": "linemanager2",
+      "username": "Mr Percy",
       "email": "linemanager2@example.com",
       "work_id": "LM002",
       "role": "line_manager",
       "password": "password123"
-    }
-  ],
-  "auth": [
-    {
-      "id": "9d3e7d15-7d2d-4e68-92d9-1c8f2b0d5c23",
-      "username": "admin",
-      "password": "admin",
-      "role": "admin"
-    },
-    {
-      "id": "b29b487d-9e5f-4f93-9a9e-7193e2e0e1b8",
-      "username": "linemanager",
-      "password": "password123",
-      "role": "line_manager"
-    },
-    {
-      "id": "b29b487d-9e5f-4f93-9a9e-7193e2e0e1b8",
-      "username": "intern",
-      "password": "intern",
-      "role": "intern"
     }
   ],
   "complaints": [
@@ -112,12 +127,58 @@
       "timestamp": "2024-07-01T12:34:56Z"
     }
   ],
-  "progressReports": [
+  "tasksReports": [
     {
       "id": "p1",
-      "user_id": "d290f1ee-6c54-4b01-90e6-d701748f0851",
-      "content": "Learned about REST APIs and built a small project.",
-      "timestamp": "2024-07-01T08:30:00Z"
+      "title": "Project 1",
+      "work_id": "7b2a3d67-1a3d-4f5e-9938-d9142f5e3949",
+      "content": "Developed a new feature for the company app.",
+      "timestamp": "2024-07-05T10:00:00Z",
+      "date": "2024-07-05",
+      "time": "10:00",
+      "completed": false,
+      "tagged_line_manager_ids": [
+        "b29b487d-9e5f-4f93-9a9e-7193e2e0e1b8"
+      ]
+    },
+    {
+      "id": "p2",
+      "title": "Project 2",
+      "work_id": "7b2a3d67-1a3d-4f5e-9938-d9142f5e3949",
+      "content": "Developed a new feature for the company app.",
+      "timestamp": "2024-07-05T10:00:00Z",
+      "date": "2024-07-05",
+      "time": "10:00",
+      "completed": false,
+      "tagged_line_manager_ids": [
+        "b29b487d-9e5f-4f93-9a9e-7193e2e0e1b8"
+      ]
+    },
+    {
+      "id": "p3",
+      "title": "Project 3",
+      "work_id": "7b2a3d67-1a3d-4f5e-9938-d9142f5e3949",
+      "content": "Developed a new feature for the company app.",
+      "timestamp": "2024-07-05T10:00:00Z",
+      "date": "2024-07-05",
+      "time": "10:00",
+      "completed": false,
+      "tagged_line_manager_ids": [
+        "9d3e7d15-7d2d-4e68-92d9-1c8f2b0d5c23"
+      ]
+    },
+    {
+      "id": "p4",
+      "title": "Project 4",
+      "work_id": "7b2a3d67-1a3d-4f5e-9938-d9142f5e3949",
+      "content": "Developed a new feature for the company app.",
+      "timestamp": "2024-07-05T10:00:00Z",
+      "date": "2024-07-05",
+      "time": "10:00",
+      "completed": false,
+      "tagged_line_manager_ids": [
+        "9d3e7d15-7d2d-4e68-92d9-1c8f2b0d5c23"
+      ]
     }
   ],
   "tags": [

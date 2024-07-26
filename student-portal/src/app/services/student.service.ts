@@ -4,6 +4,7 @@ import { Observable, catchError, of, throwError } from 'rxjs';
 import { Intern } from '../interface/intern';
 import { Admin } from '../interface/admin';
 import { LineManager } from '../interface/linemanager';
+import { TasksReport } from '../interface/tasksReport';
 
 
 
@@ -15,7 +16,7 @@ export class StudentService {
   INTERN_API_URL = 'http://localhost:3000/interns';
   ADMIN_API_URL = 'http://localhost:3000/admins';
   LINE_MANAGER_API_URL = 'http://localhost:3000/lineManagers';
-  AUTH_API_URL = 'http://localhost:3000/auth';
+  TASK_URL = 'http://localhost:3000/tasksReports';
 
   constructor(private http: HttpClient) { }
 
@@ -138,6 +139,56 @@ export class StudentService {
       })
     );
   }
+
+  // Get tasks and reports
+  getTasksReports(): Observable<TasksReport[]> {
+    return this.http.get<TasksReport[]>(this.TASK_URL).pipe(
+      catchError((error) => {
+        console.error('Error getting tasks and reports:', error);
+        return throwError(() => new Error('Error getting tasks and reports, please try again later.'));
+      })
+    );
+  }
+  // Create a new task or report
+  createTaskReport(taskReport: any): Observable<TasksReport> {
+    return this.http.post<TasksReport>(this.TASK_URL, taskReport).pipe(
+      catchError(error => {
+        console.error('Error creating task or report:', error);
+        return throwError(() => new Error('Error creating task or report, please try again later.'));
+      })
+    );
+  }
+  // delete tasks and reports
+  deleteTaskReport(id: string): Observable<void> {
+    return this.http.delete<void>(`${this.TASK_URL}/${id}`).pipe(
+      catchError(error => {
+        console.error('Error deleting task or report:', error);
+        return throwError(() => new Error('Error deleting task or report, please try again later.'));
+      })
+    );
+  }
+
+  // Search tasks and reports
+  searchTasksReports(searchText: string): Observable<any> {
+    return this.http.get<any>(`${this.TASK_URL}?search=${searchText}`).pipe(
+      catchError((error) => {
+        console.error('Error searching tasks and reports:', error);
+        return throwError(() => new Error('Error searching tasks and reports, please try again later.'));
+      })
+    );
+  }
+
+  // Update tasks and reports
+  updateTaskReport(id: string, updatedTaskReport: any): Observable<any> {
+    return this.http.patch<any>(`${this.TASK_URL}/${id}`, updatedTaskReport).pipe(
+      catchError(error => {
+        console.error('Error updating task or report:', error);
+        return throwError(() => new Error('Error updating task or report, please try again later.'));
+      })
+    );
+  }
+
+  
 
 
 }
